@@ -9,8 +9,6 @@ A single-page, mobile-first menu for a fictional Lisbon brunch café. Built as a
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run typecheck
-npm run lint
 npm run build
 ```
 
