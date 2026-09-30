@@ -20,7 +20,7 @@ export function MenuItem({ item, isSpecial, soldOut }: MenuItemProps) {
           : ""
       }`}
     >
-      <div className="flex items-baseline gap-3">
+      <div className="flex items-center gap-3">
         <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
           <h3 className={`font-display font-soft text-xl font-medium leading-snug ${dim}`}>
             {item.name}
@@ -38,7 +38,7 @@ export function MenuItem({ item, isSpecial, soldOut }: MenuItemProps) {
         </div>
         <span
           aria-hidden="true"
-          className="min-w-4 flex-1 translate-y-[-0.3em] border-b border-dotted border-ink-soft/40"
+          className="min-w-4 flex-1  border-b border-dotted border-ink-soft/40"
         />
         <p
           className={`shrink-0 font-semibold tabular-nums ${dim} ${soldOut ? "line-through" : ""}`}

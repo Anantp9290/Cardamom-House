@@ -51,7 +51,7 @@ export function SplashScreen() {
           aria-hidden="true"
           onClick={finish}
           exit={{ y: "-100%", transition: { duration: 0.85, ease: EASE_CURTAIN } }}
-          className="splash fixed inset-0 z-[100] flex flex-col items-center justify-center gap-7 bg-paper px-6 print:hidden"
+          className="splash fixed inset-0 z-100 flex flex-col items-center justify-center gap-7 bg-paper px-6 print:hidden"
         >
           <svg viewBox="0 0 120 250" fill="none" className="w-16 text-brand sm:w-20">
             <motion.path

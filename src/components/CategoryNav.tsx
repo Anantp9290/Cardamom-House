@@ -41,7 +41,7 @@ export function CategoryNav({ categories, activeId, onSelect }: CategoryNavProps
   return (
     <nav
       aria-label="Menu sections"
-      className="sticky top-0 z-30 -mx-5 border-b border-line bg-paper/90 px-5 backdrop-blur lg:top-10 lg:mx-0 lg:self-start lg:border-b-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none print:hidden"
+      className="sticky top-0 max-h-fit z-30 -mx-5 border-b border-line bg-paper/90 px-5 backdrop-blur lg:top-10 lg:mx-0 lg:items-start lg:border-b-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none print:hidden"
     >
       <ul
         ref={listRef}
