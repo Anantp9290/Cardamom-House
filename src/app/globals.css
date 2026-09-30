@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Components only use the semantic names (paper, ink, brand…),
+  so light, dark and print are all handled by swapping the variables below.
+  Brand amber #B45309 is used for fills; --brand-text is the darker/lighter
+  variant used for small amber text so it clears WCAG AA on either background.
+*/
+:root {
+  color-scheme: light;
+  --paper: #eef1e6;
+  --surface: #f8faf2;
+  --ink: #1e2b24;
+  --ink-soft: #4a5a50;
+  --line: #cfd6c0;
+  --brand: #b45309;
+  --brand-hover: #92400e;
+  --brand-text: #8f3f07;
+  --on-brand: #fffbf2;
+  --pod: #3f5a31;
+  --pod-tint: #dce6c9;
+  --heat: #9b2c1f;
+  --heat-tint: #f4ddd3;
+  --open: #2e7d46;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #121a15;
+    --surface: #1a241e;
+    --ink: #edf0e4;
+    --ink-soft: #a8b4a7;
+    --line: #2d3b32;
+    --brand-text: #f2a54a;
+    --pod: #b5cfa0;
+    --pod-tint: #27382b;
+    --heat: #f2a48f;
+    --heat-tint: #3b2620;
+    --open: #6fcf8f;
+  }
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-text: var(--brand-text);
+  --color-on-brand: var(--on-brand);
+  --color-pod: var(--pod);
+  --color-pod-tint: var(--pod-tint);
+  --color-heat: var(--heat);
+  --color-heat-tint: var(--heat-tint);
+  --color-open: var(--open);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--brand-text);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility font-soft {
+  font-variation-settings: "SOFT" 70;
+}
+
+/* One orchestrated moment: the hero settles in. Nothing else animates on load. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ping-soft {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--open) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms);
+  }
+  .live-dot {
+    animation: ping-soft 2.4s ease-out infinite;
+  }
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --paper: #fff;
+    --surface: #fff;
+    --ink: #000;
+    --ink-soft: #333;
+    --line: #bbb;
+    --brand-text: #8f3f07;
+    --pod: #3f5a31;
+    --pod-tint: #e7eedb;
+    --heat: #9b2c1f;
+    --heat-tint: #f7e5dd;
+  }
+  html {
+    font-size: 10.5px;
+  }
+  body {
+    background: #fff;
+  }
+  @page {
+    margin: 12mm;
+  }
+}
